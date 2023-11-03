@@ -6,6 +6,7 @@
 	margin: 0px;
 	padding: 0px;
 	box-sizing: border-box;
+	// border: 1px solid red;
 }
 html {
 	font-size: 62.5%;
@@ -13,4 +14,80 @@ html {
 body {
 	font-size: 1.6rem;
 	font-family: "avenir_next";
+}
+.header {
+	background-color: $bandsite-black;
+	color: $white;
+}
+.nav {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.nav__logo {
+	max-width: 12rem;
+	padding: 1.6em 0;
+}
+.nav__item-wrapper {
+	width: 100%;
+	display: flex;
+	font-size: 1.4rem;
+	font-weight: 600;
+}
+.nav__item {
+	text-align: center;
+	color: $white;
+	text-decoration: none;
+	width: 50%;
+	padding-bottom: 1.6rem;
+}
+.hero {
+	width: 100%;
+	background-image: url("../assets/images/hero-bio.jpg");
+	background-position: center;
+	background-size: cover;
+	padding: 4em 0;
+}
+.hero__title {
+	color: $white;
+	font-size: 2.4rem;
+	font-weight: 700;
+	padding: 1.6rem;
+}
+.about-section {
+	padding-left: 1.6rem;
+	padding-right: 1.6rem;
+}
+.about-section__heading {
+	font-size: 2.4rem;
+	font-weight: 700;
+	line-height: 3.2rem;
+	padding-top: 2.4rem;
+}
+.about-section__image {
+	width: 100%;
+	display: block;
+	margin: 1.6rem 0;
+}
+.about-section__quote-text {
+	font-size: 1.46rem;
+	line-height: 2.2rem;
+	font-weight: 700;
+}
+.about-section__quote-text-author {
+	font-size: 1.46rem;
+	line-height: 2.2rem;
+	font-weight: 700;
+	padding-top: 0.5rem;
+}
+.about-section__bees-knees-title {
+	font-size: 1.4rem;
+	font-weight: 600;
+	padding: 2.4rem 0 1.6rem;
+}
+.about-section__bees-knees-text {
+	margin-bottom: 2rem;
+	font-size: 1.33rem;
+	line-height: 1.8rem;
 }
