@@ -13,81 +13,126 @@ html {
 }
 body {
 	font-size: 1.6rem;
-	font-family: "avenir_next";
+	font-family: "avenir-next";
+	color: $bandsite-black;
 }
 .header {
 	background-color: $bandsite-black;
 	color: $white;
 }
-.nav {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-.nav__logo {
+.logo {
 	max-width: 12rem;
-	padding: 1.6em 0;
+	padding: 1.6rem 0;
 }
-.nav__item-wrapper {
-	width: 100%;
-	display: flex;
-	font-size: 1.4rem;
-	font-weight: 600;
-}
-.nav__item {
-	text-align: center;
-	color: $white;
-	text-decoration: none;
-	width: 50%;
-	padding-bottom: 1.6rem;
+.nav {
+	@include flex-property(column, center, center);
+
+	&__menu-wrapper {
+		width: 100%;
+		@include flex-property;
+		padding-bottom: 1.2rem;
+	}
+	&__menu-item {
+		width: 50%;
+		@include typography(1.4rem, 600, 2.2rem);
+		color: $white;
+		text-decoration: none;
+		text-align: center;
+	}
 }
 .hero {
 	width: 100%;
 	background-image: url("../assets/images/hero-bio.jpg");
 	background-position: center;
 	background-size: cover;
-	padding: 4em 0;
-}
-.hero__title {
-	color: $white;
-	font-size: 2.4rem;
-	font-weight: 700;
-	padding: 1.6rem;
+
+	&__title {
+		@include typography($text-size: 2.4rem, $text-weight: 600);
+		color: $white;
+		padding: 8rem 1.6rem;
+		background-color: $bs-b-opacity-50;
+	}
 }
 .about-section {
-	padding-left: 1.6rem;
-	padding-right: 1.6rem;
+	padding: 0 1.6rem;
+
+	&__heading {
+		@include typography($text-size: 2.4rem, $text-weight: 600);
+		padding: 2.4rem 0 1.2rem;
+	}
+	&__image {
+		width: 100%;
+	}
+	&__quote-text {
+		@include typography(1.4rem, 600, 2.2rem);
+		padding-top: 0.8rem;
+
+		&-author {
+			display: block;
+			padding-top: 0.5rem;
+		}
+	}
+	&__bees-knees-title {
+		@include typography(1.4rem, 600, 2.2rem);
+		padding: 2rem 0 1rem;
+	}
+	&__bees-knees-text {
+		@include typography(1.3rem, 400, 1.8rem);
+		padding-right: 0.6em;
+		padding-bottom: 1.6rem;
+	}
 }
-.about-section__heading {
-	font-size: 2.4rem;
-	font-weight: 700;
-	line-height: 3.2rem;
-	padding-top: 2.4rem;
+.gallery {
+	background-color: $alabaster;
+
+	&__container {
+		@extend .about-section;
+	}
+	&__heading {
+		@include typography($text-size: 2.4rem, $text-weight: 600);
+		padding: 2.4rem 0 1rem;
+	}
+	&__image {
+		width: 100%;
+		padding-bottom: 1.6rem;
+	}
 }
-.about-section__image {
-	width: 100%;
-	display: block;
-	margin: 1.6rem 0;
-}
-.about-section__quote-text {
-	font-size: 1.46rem;
-	line-height: 2.2rem;
-	font-weight: 700;
-}
-.about-section__quote-text-author {
-	font-size: 1.46rem;
-	line-height: 2.2rem;
-	font-weight: 700;
-	padding-top: 0.5rem;
-}
-.about-section__bees-knees-title {
-	font-size: 1.4rem;
-	font-weight: 600;
-	padding: 2.4rem 0 1.6rem;
-}
-.about-section__bees-knees-text {
-	margin-bottom: 2rem;
-	font-size: 1.33rem;
-	line-height: 1.8rem;
+.footer {
+	background-color: $bandsite-black;
+	color: $white;
+
+	&__container {
+		@extend .gallery__container;
+	}
+	&__social-media-heading {
+		@include typography($text-size: 2.4rem, $text-weight: 600);
+		padding: 3.2rem 0 1.6rem;
+	}
+	&__icons-wrapper {
+		@include flex-property;
+		gap: 2.4rem;
+	}
+	&__contacts-wrapper {
+		padding: 2.4rem 0 4rem;
+		@include flex-property($direction: column);
+		gap: 2.4rem;
+	}
+	&__contact {
+		@include flex-property($direction: column);
+		gap: 1.6rem;
+
+		&-title {
+			@include typography(1.3rem, 600, 1.8rem);
+		}
+		&-detail {
+			@include typography(1.3rem, 400, 1.8rem);
+		}
+		&-email {
+			@extend .footer__contact-detail;
+		}
+	}
+	&__copyright {
+		@include typography(1.1rem, 400, 1.8rem);
+		padding-bottom: 1.6rem;
+	}
 }

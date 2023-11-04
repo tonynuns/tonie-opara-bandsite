@@ -11,3 +11,14 @@
 		@content;
 	}
 }
+@mixin flex-property($direction: row, $justify: flex-start, $align: stretch) {
+	display: flex;
+	flex-direction: $direction;
+	justify-content: $justify;
+	align-items: $align;
+}
+@mixin typography($text-size: 1.3rem, $text-weight: 400, $line-height: normal) {
+	font-size: $text-size;
+	font-weight: $text-weight;
+	line-height: $line-height;
+}
