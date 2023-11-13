@@ -21,7 +21,10 @@ body {
 	color: $white;
 
 	@include tablet {
-		padding: 1.2rem 4rem;
+		padding: 2rem 4rem;
+	}
+	@include desktop {
+		padding: 3rem 14rem;
 	}
 }
 .logo {
@@ -29,11 +32,14 @@ body {
 	padding: 1.6rem 0;
 	display: block;
 
-	@include tablet {
-		&--footer {
+	&--footer {
+		@include tablet {
 			position: absolute;
 			top: 5.6rem;
 			right: 4rem;
+		}
+		@include desktop {
+			right: 14rem;
 		}
 	}
 }
@@ -51,7 +57,11 @@ body {
 
 		@include tablet {
 			@include flex-property;
-			padding: 0.5rem 4rem 0;
+			gap: 6rem;
+			padding: 0.5rem 5rem 0;
+		}
+		@include desktop {
+			gap: 4.5rem;
 		}
 	}
 	&__menu-item {
@@ -62,7 +72,7 @@ body {
 		text-align: center;
 
 		@include tablet {
-			width: 21%;
+			width: auto;
 			@include typography(1.6rem, 600, 2.2rem);
 		}
 	}
@@ -76,6 +86,9 @@ body {
 	@include tablet {
 		background-position: bottom;
 	}
+	@include desktop {
+		background-position: 0% 25%;
+	}
 	&__title {
 		@include typography($text-size: 2.4rem, $text-weight: 600);
 		color: $white;
@@ -86,6 +99,10 @@ body {
 			padding: 19rem 4rem;
 			@include typography($text-size: 6rem, $text-weight: 600);
 		}
+		@include desktop {
+			padding: 28rem 14rem;
+			@include typography($text-size: 6rem, $text-weight: 600);
+		}
 	}
 }
 .about-section {
@@ -94,47 +111,77 @@ body {
 	@include tablet {
 		padding: 0 4rem;
 	}
+	@include desktop {
+		padding: 0 14rem;
+	}
 
 	&__heading {
-		@include typography($text-size: 2.4rem, $text-weight: 600);
+		@include typography($text-size: 2.6rem, $text-weight: 600);
 		padding: 2.4rem 0 1.2rem;
 
 		@include tablet {
-			@include typography($text-size: 3.6rem, $text-weight: 600);
+			@include typography($text-size: 3.4rem, $text-weight: 600);
 			padding: 4.8rem 0 2.4rem;
 		}
 	}
 	&__content-container {
 		@include tablet {
-			padding: 0 6.4rem;
+			padding: 0 5.6rem;
+		}
+		@include desktop {
+			padding: 0 8rem;
 		}
 	}
 	&__image {
 		width: 100%;
+
+		@include tablet {
+			height: 32rem;
+			object-fit: cover;
+		}
+		@include desktop {
+			height: 46rem;
+		}
 	}
 	&__quote-text {
 		@include typography(1.4rem, 600, 2.2rem);
 		padding-top: 0.8rem;
+
 		@include tablet {
-			@include typography(2.2rem, 600, 3.2rem);
+			@include typography(2.25rem, 600, 3.2rem);
 			padding-top: 2.4rem;
+		}
+		@include desktop {
+			width: 78%;
+			@include typography(2.2rem, 600, 3.2rem);
 		}
 
 		&-author {
 			display: block;
 			padding-top: 0.5rem;
+
 			@include tablet {
-				@include typography($text-size: 1.8rem, $text-weight: 600);
-				padding-top: 1.4rem;
+				@include typography($text-size: 1.54rem, $text-weight: 700);
+				padding-top: 1.5rem;
 			}
 		}
 	}
 	&__bees-knees-title {
 		@include typography(1.4rem, 600, 2.2rem);
 		padding: 2rem 0 1rem;
+
 		@include tablet {
 			@include typography(2.7rem, 600, 2.2rem);
 			padding: 6.4rem 0 2.8rem;
+		}
+		@include desktop {
+			@include typography(2.4rem, 600, 2.2rem);
+		}
+	}
+	&__bees-knees-text-wrapper {
+		@include tablet {
+			@include flex-property;
+			gap: 2rem;
 		}
 	}
 	&__bees-knees-text {
@@ -142,17 +189,18 @@ body {
 		padding-right: 0.6em;
 		padding-bottom: 1.6rem;
 
-		&-wrapper {
-			@include tablet {
-				@include flex-property;
-				gap: 2rem;
-				font-size: 1.6rem;
-			}
+		@include desktop {
+			@include typography(1.345rem, 400, 1.8rem);
 		}
 	}
 }
 .gallery {
 	background-color: $alabaster;
+	padding-bottom: 1.6rem;
+
+	@include tablet {
+		padding-bottom: 3.5rem;
+	}
 
 	&__container {
 		@extend .about-section;
@@ -165,20 +213,22 @@ body {
 			padding: 4.8rem 0 2.4rem;
 		}
 	}
+	&__image-wrapper {
+		@include flex-property($direction: column);
+		gap: 1.6rem;
+
+		@include tablet {
+			@include flex-property($justify: space-between);
+			flex-wrap: wrap;
+			gap: 2.5rem;
+		}
+	}
 	&__image {
 		width: 100%;
-		padding-bottom: 1.6rem;
-		@include tablet {
-			width: 31%;
-			padding-bottom: 2.2rem;
-		}
 
-		&-wrapper {
-			@include tablet {
-				@include flex-property($justify: space-between);
-				flex-wrap: wrap;
-				padding-bottom: 1.4rem;
-			}
+		@include tablet {
+			width: 30%;
+			flex: 1 1 auto;
 		}
 	}
 }
@@ -198,7 +248,10 @@ body {
 		@include tablet {
 			@include flex-property;
 			padding-top: 5.6rem;
-			gap: 0;
+			gap: 17rem;
+		}
+		@include desktop {
+			gap: 5rem;
 		}
 
 		&-heading {
@@ -207,11 +260,9 @@ body {
 			@include tablet {
 				@include typography($text-size: 3.6rem, $text-weight: 600);
 				padding: 0.2rem 0 0;
-				width: 34.5%;
 			}
 		}
 	}
-
 	&__icons-wrapper {
 		@include flex-property;
 		gap: 3.4rem;
@@ -225,6 +276,10 @@ body {
 			@include flex-property($justify: space-between);
 			padding: 4.8rem 0 6.4rem;
 		}
+		@include desktop {
+			@include flex-property;
+			gap: 6.5rem;
+		}
 	}
 	&__contact {
 		@include flex-property($direction: column);
@@ -232,9 +287,14 @@ body {
 		@include typography(1.3rem, 400, 1.8rem);
 
 		@include tablet {
-			width: 31%;
+			width: 30%;
+			flex: 1 1 auto;
 			@include typography(1.4rem, 400, 2.2rem);
 			gap: 2.4rem;
+		}
+		@include desktop {
+			width: auto;
+			flex: 0 0 auto;
 		}
 
 		&-title {
