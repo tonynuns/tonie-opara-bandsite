@@ -6,7 +6,6 @@
 	margin: 0px;
 	padding: 0px;
 	box-sizing: border-box;
-	// border: 1px solid red;
 }
 html {
 	font-size: 62.5%;
@@ -21,16 +20,20 @@ body {
 	color: $white;
 
 	@include tablet {
-		padding: 2rem 4rem;
+		padding: 0 4rem;
 	}
 	@include desktop {
-		padding: 3rem 14rem;
+		padding: 0 14rem;
 	}
 }
 .logo {
 	max-width: 12rem;
 	padding: 1.6rem 0;
 	display: block;
+
+	&--nav:hover {
+		transform: scale(1.2);
+	}
 
 	&--footer {
 		@include tablet {
@@ -45,6 +48,7 @@ body {
 }
 .nav {
 	@include flex-property(column, center, center);
+
 	@include tablet {
 		flex-direction: row;
 		justify-content: flex-start;
@@ -53,7 +57,6 @@ body {
 	&__menu-wrapper {
 		width: 100%;
 		@include flex-property;
-		padding-bottom: 1.2rem;
 
 		@include tablet {
 			@include flex-property;
@@ -66,19 +69,37 @@ body {
 	}
 	&__menu-item {
 		width: 50%;
-		@include typography(1.4rem, 600, 2.2rem);
-		color: $white;
+		@include typography(1.4rem, 400, 2.2rem);
+		color: $mercury;
 		text-decoration: none;
 		text-align: center;
+		padding-bottom: 0.6rem;
 
 		@include tablet {
 			width: auto;
-			@include typography(1.6rem, 600, 2.2rem);
+			@include typography(1.6rem, 400, 2.2rem);
+			padding: 2rem 0;
+		}
+		@include desktop {
+			padding: 3rem 0;
+		}
+		&--active {
+			color: $white;
+			font-weight: 600;
+			border-bottom: 3px solid $white;
+		}
+		&:hover {
+			@include hover-state;
+			transform: scaleX(1.1); //Diving deeper code
+		}
+		&:active {
+			@include active-state;
 		}
 	}
 }
 .hero {
 	width: 100%;
+	height: 58vw;
 	background-image: url("../assets/images/hero-bio.jpg");
 	background-position: center;
 	background-size: cover;
@@ -87,20 +108,25 @@ body {
 		background-position: bottom;
 	}
 	@include desktop {
+		height: 50vw;
 		background-position: 0% 25%;
+	}
+	&__overlay {
+		height: 100%;
+		@include flex-property($align: center);
+		background-color: $bs-b-opacity-50;
 	}
 	&__title {
 		@include typography($text-size: 2.4rem, $text-weight: 600);
 		color: $white;
-		padding: 8rem 1.6rem;
-		background-color: $bs-b-opacity-50;
+		padding-left: 1.6rem;
 
 		@include tablet {
-			padding: 19rem 4rem;
+			padding-left: 4rem;
 			@include typography($text-size: 6rem, $text-weight: 600);
 		}
 		@include desktop {
-			padding: 28rem 14rem;
+			padding-left: 14rem;
 			@include typography($text-size: 6rem, $text-weight: 600);
 		}
 	}
@@ -116,7 +142,7 @@ body {
 	}
 
 	&__heading {
-		@include typography($text-size: 2.6rem, $text-weight: 600);
+		@include typography($text-size: 2.4rem, $text-weight: 600);
 		padding: 2.4rem 0 1.2rem;
 
 		@include tablet {
@@ -126,7 +152,7 @@ body {
 	}
 	&__content-container {
 		@include tablet {
-			padding: 0 5.6rem;
+			padding: 0 5.8rem;
 		}
 		@include desktop {
 			padding: 0 8rem;
@@ -136,11 +162,11 @@ body {
 		width: 100%;
 
 		@include tablet {
-			height: 32rem;
+			height: 42vw;
 			object-fit: cover;
 		}
 		@include desktop {
-			height: 46rem;
+			height: 58vh;
 		}
 	}
 	&__quote-text {
@@ -186,11 +212,11 @@ body {
 	}
 	&__bees-knees-text {
 		@include typography(1.3rem, 400, 1.8rem);
-		padding-right: 0.6em;
+		padding-right: 0.7rem;
 		padding-bottom: 1.6rem;
 
 		@include desktop {
-			@include typography(1.345rem, 400, 1.8rem);
+			@include typography(1.355rem, 400, 1.8rem);
 		}
 	}
 }
@@ -208,6 +234,7 @@ body {
 	&__heading {
 		@include typography($text-size: 2.4rem, $text-weight: 600);
 		padding: 2.4rem 0 1rem;
+
 		@include tablet {
 			@include typography($text-size: 3.6rem, $text-weight: 600);
 			padding: 4.8rem 0 2.4rem;
@@ -225,6 +252,12 @@ body {
 	}
 	&__image {
 		width: 100%;
+		filter: grayscale(100%); //Diving deeper code
+
+		//Diving deeper code
+		&:hover {
+			filter: none;
+		}
 
 		@include tablet {
 			width: 30%;
@@ -248,7 +281,7 @@ body {
 		@include tablet {
 			@include flex-property;
 			padding-top: 5.6rem;
-			gap: 17rem;
+			gap: 2.4rem;
 		}
 		@include desktop {
 			gap: 5rem;
@@ -260,12 +293,19 @@ body {
 			@include tablet {
 				@include typography($text-size: 3.6rem, $text-weight: 600);
 				padding: 0.2rem 0 0;
+				width: 31.5%;
+			}
+			@include desktop {
+				width: auto;
 			}
 		}
 	}
 	&__icons-wrapper {
-		@include flex-property;
+		@include flex-property($align: center);
 		gap: 3.4rem;
+	}
+	&__icon {
+		display: block;
 	}
 	&__contacts-wrapper {
 		padding: 2.4rem 0 4rem;
@@ -296,9 +336,12 @@ body {
 			width: auto;
 			flex: 0 0 auto;
 		}
-
 		&-title {
 			font-weight: 600;
+		}
+		&-email {
+			text-decoration: none;
+			color: $white;
 		}
 	}
 	&__copyright {

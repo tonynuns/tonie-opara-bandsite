@@ -22,3 +22,12 @@
 	font-weight: $text-weight;
 	line-height: $line-height;
 }
+@mixin hover-state {
+	color: $white;
+	border-bottom: 3px solid $white;
+}
+@mixin active-state {
+	color: $white;
+	font-weight: 600;
+	border-bottom: 3px solid $white;
+}
