@@ -248,6 +248,113 @@ body {
 		}
 	}
 }
+.avatar {
+	border-radius: 50%;
+	width: 100%;
+	max-width: 3.6rem;
+	height: 3.6rem;
+}
+.form-detail {
+	@include flex-property($direction: column);
+	gap: 0.5rem;
+}
+.form-label {
+	@include typography($text-size: 1.1rem, $text-weight: 700);
+	color: $silver;
+}
+.form-input {
+	height: 3.6rem;
+	padding: 1.2rem;
+	border: 2px solid $mercury;
+	border-radius: 0.4rem;
+
+	&::placeholder {
+		font-family: "avenir-next";
+		font-size: 1.2rem;
+		color: $bandsite-black;
+	}
+	&:focus {
+		outline-color: $bandsite-black;
+	}
+	&:invalid {
+		outline-color: $error-state;
+	}
+}
+.comments {
+	padding: 2.4rem 0;
+
+	&__container {
+		@extend .about-section;
+	}
+	&__heading {
+		@include typography($text-size: 2.4rem, $text-weight: 600);
+		padding-bottom: 2.4rem;
+	}
+	&__form-wrapper {
+		@include flex-property($justify: space-between);
+		gap: 1.6rem;
+		padding-bottom: 1.6rem;
+		border-bottom: 2px solid $mercury;
+	}
+	&__form-avatar {
+		background-image: url("../assets/images/Mohan-muruge.jpg");
+		background-position: 5.2rem;
+		background-size: cover;
+		margin-top: 1.8rem;
+	}
+	&__form {
+		@include flex-property($direction: column);
+		gap: 2rem;
+		flex-grow: 1;
+	}
+	&__form-text {
+		@include flex-property($direction: column);
+		gap: 2.4rem;
+	}
+	&__form-comment-input {
+		height: 12rem;
+	}
+	&__display {
+		@include flex-property($justify: space-between);
+		gap: 1.6rem;
+		padding: 1.6rem 0;
+		border-bottom: 2px solid $mercury;
+
+		&-avatar {
+			background-color: $mercury;
+		}
+		&-text {
+			position: relative;
+		}
+		&-name {
+			@include typography($text-size: 1.4rem, $text-weight: 700);
+			padding-bottom: 1.2rem;
+		}
+		&-date {
+			position: absolute;
+			top: 0;
+			right: 0;
+			@include typography($text-size: 1.3rem, $text-weight: 600);
+			color: $silver;
+		}
+		&-paragraph {
+			@include typography($text-size: 1.255rem, $text-weight: 400);
+		}
+	}
+}
+.btn {
+	height: 4rem;
+	border: none;
+	border-radius: 0.4rem;
+	background-color: $bandsite-black;
+	color: $white;
+	cursor: pointer;
+
+	&:hover {
+		background-color: $bandsite-darkblack;
+	}
+}
+
 .footer {
 	background-color: $bandsite-black;
 	color: $white;
