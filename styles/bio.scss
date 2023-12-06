@@ -258,9 +258,17 @@ body {
 		max-width: 4.8rem;
 		height: 4.8rem;
 	}
+	@include desktop {
+		max-width: 5.6rem;
+		height: 5.6rem;
+	}
 }
 .comments {
 	padding: 2.4rem 0;
+
+	@include tablet {
+		padding: 3.6rem 0;
+	}
 
 	&__container {
 		@extend .about-section;
@@ -272,6 +280,9 @@ body {
 		@include tablet {
 			@include typography($text-size: 3.6rem, $text-weight: 600);
 		}
+		@include desktop {
+			padding-bottom: 3.6rem;
+		}
 	}
 	&__form-wrapper {
 		@include flex-property($justify: space-between);
@@ -280,7 +291,11 @@ body {
 		border-bottom: 2px solid $mercury;
 
 		@include tablet {
-			padding: 0 5.6rem 2rem;
+			margin: 0 5.6rem 2rem;
+		}
+		@include desktop {
+			margin: 0 25rem 2rem;
+			padding-bottom: 2rem;
 		}
 	}
 	&__form-avatar {
@@ -291,6 +306,10 @@ body {
 
 		@include tablet {
 			background-position: 6.8rem;
+		}
+		@include desktop {
+			background-position: 8rem;
+			margin-top: 2rem;
 		}
 	}
 	&__form {
@@ -309,6 +328,10 @@ body {
 		&-field-label {
 			@include typography($text-size: 1.1rem, $text-weight: 700);
 			color: $silver;
+
+			@include desktop {
+				@include typography($text-size: 1.35rem, $text-weight: 700);
+			}
 		}
 		&-field-input {
 			height: 3.6rem;
@@ -323,6 +346,9 @@ body {
 
 				@include tablet {
 					font-size: 1.4rem;
+				}
+				@include desktop {
+					font-size: 1.65rem;
 				}
 			}
 			&:focus {
@@ -339,6 +365,9 @@ body {
 				min-height: 4.8rem;
 				padding: 1.6rem;
 			}
+			@include desktop {
+				min-height: 5.6rem;
+			}
 		}
 		&-btn {
 			@include tablet {
@@ -349,6 +378,9 @@ body {
 	&__display-wrapper {
 		@include tablet {
 			padding: 0 5.6rem;
+		}
+		@include desktop {
+			padding: 0 26rem;
 		}
 	}
 	&__display {
@@ -371,6 +403,9 @@ body {
 			@include tablet {
 				padding-bottom: 0.8rem;
 			}
+			@include desktop {
+				@include typography($text-size: 1.33rem, $text-weight: 600);
+			}
 		}
 		&-date {
 			position: absolute;
@@ -378,6 +413,10 @@ body {
 			right: 0;
 			@include typography($text-size: 1.3rem, $text-weight: 600);
 			color: $silver;
+
+			@include desktop {
+				@include typography($text-size: 1.23rem, $text-weight: 600);
+			}
 		}
 		&-paragraph {
 			@include typography(
@@ -389,6 +428,13 @@ body {
 			@include tablet {
 				@include typography(
 					$text-size: 1.397rem,
+					$text-weight: 400,
+					$line-height: 2.4rem
+				);
+			}
+			@include desktop {
+				@include typography(
+					$text-size: 1.33rem,
 					$text-weight: 400,
 					$line-height: 2.4rem
 				);
