@@ -253,31 +253,10 @@ body {
 	width: 100%;
 	max-width: 3.6rem;
 	height: 3.6rem;
-}
-.form-detail {
-	@include flex-property($direction: column);
-	gap: 0.5rem;
-}
-.form-label {
-	@include typography($text-size: 1.1rem, $text-weight: 700);
-	color: $silver;
-}
-.form-input {
-	height: 3.6rem;
-	padding: 1.2rem;
-	border: 2px solid $mercury;
-	border-radius: 0.4rem;
 
-	&::placeholder {
-		font-family: "avenir-next";
-		font-size: 1.2rem;
-		color: $bandsite-black;
-	}
-	&:focus {
-		outline-color: $bandsite-black;
-	}
-	&:invalid {
-		outline-color: $error-state;
+	@include tablet {
+		max-width: 4.8rem;
+		height: 4.8rem;
 	}
 }
 .comments {
@@ -289,33 +268,91 @@ body {
 	&__heading {
 		@include typography($text-size: 2.4rem, $text-weight: 600);
 		padding-bottom: 2.4rem;
+
+		@include tablet {
+			@include typography($text-size: 3.6rem, $text-weight: 600);
+		}
 	}
 	&__form-wrapper {
 		@include flex-property($justify: space-between);
 		gap: 1.6rem;
 		padding-bottom: 1.6rem;
 		border-bottom: 2px solid $mercury;
+
+		@include tablet {
+			padding: 0 5.6rem 2rem;
+		}
 	}
 	&__form-avatar {
 		background-image: url("../assets/images/Mohan-muruge.jpg");
 		background-position: 5.2rem;
 		background-size: cover;
 		margin-top: 1.8rem;
+
+		@include tablet {
+			background-position: 6.8rem;
+		}
 	}
 	&__form {
 		@include flex-property($direction: column);
 		gap: 2rem;
 		flex-grow: 1;
+
+		&-text {
+			@include flex-property($direction: column);
+			gap: 2.4rem;
+		}
+		&-field {
+			@include flex-property($direction: column);
+			gap: 0.5rem;
+		}
+		&-field-label {
+			@include typography($text-size: 1.1rem, $text-weight: 700);
+			color: $silver;
+		}
+		&-field-input {
+			height: 3.6rem;
+			padding: 1.2rem;
+			border: 2px solid $mercury;
+			border-radius: 0.4rem;
+
+			&::placeholder {
+				font-family: "avenir-next";
+				font-size: 1.2rem;
+				color: $bandsite-black;
+
+				@include tablet {
+					font-size: 1.4rem;
+				}
+			}
+			&:focus {
+				outline-color: $bandsite-black;
+			}
+			&:invalid {
+				outline-color: $error-state;
+			}
+			&--comment {
+				height: 12rem;
+			}
+
+			@include tablet {
+				min-height: 4.8rem;
+				padding: 1.6rem;
+			}
+		}
+		&-btn {
+			@include tablet {
+				align-self: flex-end;
+			}
+		}
 	}
-	&__form-text {
-		@include flex-property($direction: column);
-		gap: 2.4rem;
-	}
-	&__form-comment-input {
-		height: 12rem;
+	&__display-wrapper {
+		@include tablet {
+			padding: 0 5.6rem;
+		}
 	}
 	&__display {
-		@include flex-property($justify: space-between);
+		@include flex-property;
 		gap: 1.6rem;
 		padding: 1.6rem 0;
 		border-bottom: 2px solid $mercury;
@@ -325,10 +362,15 @@ body {
 		}
 		&-text {
 			position: relative;
+			margin-top: 0.3rem;
 		}
 		&-name {
-			@include typography($text-size: 1.4rem, $text-weight: 700);
+			@include typography($text-size: 1.4rem, $text-weight: 600);
 			padding-bottom: 1.2rem;
+
+			@include tablet {
+				padding-bottom: 0.8rem;
+			}
 		}
 		&-date {
 			position: absolute;
@@ -338,7 +380,19 @@ body {
 			color: $silver;
 		}
 		&-paragraph {
-			@include typography($text-size: 1.255rem, $text-weight: 400);
+			@include typography(
+				$text-size: 1.255rem,
+				$text-weight: 400,
+				$line-height: 2rem
+			);
+
+			@include tablet {
+				@include typography(
+					$text-size: 1.397rem,
+					$text-weight: 400,
+					$line-height: 2.4rem
+				);
+			}
 		}
 	}
 }
@@ -352,6 +406,11 @@ body {
 
 	&:hover {
 		background-color: $bandsite-darkblack;
+	}
+
+	@include tablet {
+		width: 30%;
+		min-width: 15rem;
 	}
 }
 
