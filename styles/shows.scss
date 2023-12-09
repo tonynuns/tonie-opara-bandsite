@@ -6,46 +6,110 @@
 .hero--shows {
 	background-image: url("../assets/images/hero-shows.jpg");
 	height: 85vw;
+
+	@include tablet {
+		height: 65vw;
+		background-position: center;
+	}
 }
 .hero__overlay--shows {
 	flex-direction: column;
-	align-items: flex-start;
 	justify-content: center;
-	gap: 1.6rem;
+	gap: 1.2rem;
 }
 .hero__sub-text {
 	@include typography($text-size: 1.4rem, $text-weight: 400);
 	color: $white;
 	padding-left: 1.6rem;
+
+	@include tablet {
+		@include typography($text-size: 2.4rem, $text-weight: 600);
+		padding-left: 4rem;
+	}
 }
 .hero__music {
 	padding: 0 1.6rem;
+
+	@include tablet {
+		padding-left: 4rem;
+		width: 60%;
+		margin-top: 4.2rem;
+	}
+}
+.hero__music-frame {
+	min-height: 8rem;
 }
 .shows {
-	@include flex-property($direction: column);
-	gap: 2rem;
 	padding: 2.8rem 0 1.6rem;
+
+	@include tablet {
+		padding: 4rem 0 2.8rem;
+	}
 
 	&__heading {
 		@include typography($text-size: 2.4rem, $text-weight: 600);
-		padding: 0 1.6rem;
+		padding: 0 1.6rem 2rem;
+
+		@include tablet {
+			@include typography($text-size: 3.6rem, $text-weight: 600);
+			padding: 0 4rem 4rem;
+		}
+	}
+	&__container {
+		@include flex-property($direction: column);
+		gap: 1.6rem;
+
+		@include tablet {
+			margin: 0 1.5rem;
+			padding-top: 1.6rem;
+			gap: 0;
+			position: relative;
+		}
 	}
 	&__info-wrapper {
 		@include flex-property($direction: column);
-		gap: 1.4rem;
+		gap: 1.6rem;
 		padding: 0 1.6rem 1.3rem;
 		border-bottom: 2px solid $mercury;
+
+		@include tablet {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			align-items: center;
+			padding: 1.6rem 2.5rem;
+		}
 	}
 	&__info {
 		@include flex-property($direction: column);
-		gap: 0.5rem;
+		gap: 0.8rem;
+
+		@include tablet {
+			gap: 2rem;
+		}
 
 		&-label {
-			@include typography($text-size: 1.1rem, $text-weight: 700);
+			@include typography($text-size: 1rem, $text-weight: 700);
 			color: $silver;
+
+			@include tablet {
+				display: none;
+			}
+
+			&--first {
+				@include tablet {
+					display: block;
+					position: absolute;
+					top: 0;
+					@include typography($text-size: 1.2rem, $text-weight: 700);
+				}
+			}
 		}
 		&-detail {
-			@include typography($text-size: 1.2rem, $text-weight: 400);
+			@include typography($text-size: 1.3rem, $text-weight: 400);
+
+			@include tablet {
+				@include typography($text-size: 1.4rem, $text-weight: 400);
+			}
 
 			&--date {
 				font-weight: 600;

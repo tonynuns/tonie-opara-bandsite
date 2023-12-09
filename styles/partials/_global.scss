@@ -121,7 +121,23 @@ body {
 		}
 	}
 }
+.btn {
+	height: 4rem;
+	border: none;
+	border-radius: 0.4rem;
+	background-color: $bandsite-black;
+	color: $white;
+	cursor: pointer;
 
+	&:hover {
+		background-color: $bandsite-darkblack;
+	}
+
+	@include tablet {
+		width: 30%;
+		min-width: 15rem;
+	}
+}
 .footer {
 	background-color: $bandsite-black;
 	color: $white;
@@ -218,22 +234,5 @@ body {
 			@include typography(1.4rem, 400, 1.8rem);
 			padding-bottom: 4.8rem;
 		}
-	}
-}
-.btn {
-	height: 4rem;
-	border: none;
-	border-radius: 0.4rem;
-	background-color: $bandsite-black;
-	color: $white;
-	cursor: pointer;
-
-	&:hover {
-		background-color: $bandsite-darkblack;
-	}
-
-	@include tablet {
-		width: 30%;
-		min-width: 15rem;
 	}
 }
