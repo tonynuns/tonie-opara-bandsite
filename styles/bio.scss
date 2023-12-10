@@ -180,10 +180,10 @@
 		border-bottom: 2px solid $mercury;
 
 		@include tablet {
-			margin: 0 5.6rem 2rem;
+			margin: 0 5.6rem;
 		}
 		@include desktop {
-			margin: 0 25rem 2rem;
+			margin: 0 25rem;
 			padding-bottom: 2rem;
 		}
 	}
@@ -227,18 +227,18 @@
 			padding: 1.2rem;
 			border: 2px solid $mercury;
 			border-radius: 0.4rem;
+			font-family: "avenir-next";
+			font-size: 1.2rem;
+
+			@include tablet {
+				font-size: 1.4rem;
+			}
+			@include desktop {
+				font-size: 1.65rem;
+			}
 
 			&::placeholder {
-				font-family: "avenir-next";
-				font-size: 1.2rem;
 				color: $bandsite-black;
-
-				@include tablet {
-					font-size: 1.4rem;
-				}
-				@include desktop {
-					font-size: 1.65rem;
-				}
 			}
 			&:focus {
 				outline-color: $bandsite-black;
@@ -261,6 +261,7 @@
 		&-btn {
 			@include tablet {
 				align-self: flex-end;
+				width: 30%;
 			}
 		}
 	}
@@ -284,6 +285,7 @@
 		&-text {
 			position: relative;
 			margin-top: 0.3rem;
+			width: 100%;
 		}
 		&-name {
 			@include typography($text-size: 1.4rem, $text-weight: 600);
@@ -299,7 +301,7 @@
 		&-date {
 			position: absolute;
 			top: 0;
-			right: 0;
+			right: 0rem;
 			@include typography($text-size: 1.3rem, $text-weight: 600);
 			color: $silver;
 
