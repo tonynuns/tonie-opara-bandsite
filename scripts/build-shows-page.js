@@ -56,7 +56,7 @@ function displayShows() {
 
 		const dateLabel = document.createElement("p");
 		dateLabel.classList.add("shows__info-label");
-		if (showList.indexOf(show) === 0) {
+		if (show === showList[0]) {
 			dateLabel.classList.add("shows__info-label--first");
 		}
 		dateLabel.innerText = "DATE";
@@ -73,7 +73,7 @@ function displayShows() {
 
 		const venueLabel = document.createElement("p");
 		venueLabel.classList.add("shows__info-label");
-		if (showList.indexOf(show) === 0) {
+		if (show === showList[0]) {
 			venueLabel.classList.add("shows__info-label--first");
 		}
 		venueLabel.innerText = "VENUE";
@@ -90,7 +90,7 @@ function displayShows() {
 
 		const locationLabel = document.createElement("p");
 		locationLabel.classList.add("shows__info-label");
-		if (showList.indexOf(show) === 0) {
+		if (show === showList[0]) {
 			locationLabel.classList.add("shows__info-label--first");
 		}
 		locationLabel.innerText = "LOCATION";
