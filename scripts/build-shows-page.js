@@ -63,7 +63,7 @@ function displayShows() {
 		dateDiv.appendChild(dateLabel);
 
 		const dateDetail = document.createElement("p");
-		dateDetail.classList.add("shows__info-detail");
+		dateDetail.classList.add("shows__info-detail", "shows__info-detail--date");
 		dateDetail.innerText = show.date;
 		dateDiv.appendChild(dateDetail);
 
@@ -117,7 +117,7 @@ function displayShows() {
 	showSection.appendChild(divContainer);
 }
 
-// Change 'show' background colour when clicked
+// change 'show' background colour when clicked
 const showsGroup = document.querySelector(".shows__container");
 const listOfShows = document.querySelectorAll(".shows__info-wrapper");
 
@@ -128,5 +128,12 @@ showsGroup.addEventListener("click", (e) => {
 		} else {
 			show.classList.remove("shows__info-wrapper--clicked");
 		}
+	});
+	e.stopPropagation();
+});
+
+document.addEventListener("click", (e) => {
+	listOfShows.forEach((show) => {
+		show.classList.remove("shows__info-wrapper--clicked");
 	});
 });

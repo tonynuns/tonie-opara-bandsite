@@ -70,7 +70,7 @@
 
 	&__heading {
 		@include typography($text-size: 2.4rem, $text-weight: 600);
-		padding: 0 1.6rem 2rem;
+		padding: 0 1.6rem 1.6rem;
 
 		@include tablet {
 			@include typography($text-size: 3.6rem, $text-weight: 600);
@@ -84,7 +84,7 @@
 	}
 	&__container {
 		@include flex-property($direction: column);
-		gap: 1.6rem;
+		gap: 0rem;
 
 		@include tablet {
 			margin: 0 1.5rem;
@@ -101,7 +101,7 @@
 	&__info-wrapper {
 		@include flex-property($direction: column);
 		gap: 1.6rem;
-		padding: 0 1.6rem 1.3rem;
+		padding: 1.6rem;
 		border-bottom: 2px solid $mercury;
 
 		@include tablet {

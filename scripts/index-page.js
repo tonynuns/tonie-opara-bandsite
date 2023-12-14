@@ -31,7 +31,7 @@ cForm.addEventListener("submit", (e) => {
 	e.preventDefault();
 	const cFormName = e.target.name.value;
 	const cFormComment = e.target.comment.value;
-	const currentDate = new Date(); //.toLocaleDateString();
+	const currentDate = new Date();
 
 	// construct new comment object
 	const newComment = {
@@ -48,7 +48,7 @@ function addComment(newComment) {
 	// add the new comment to the commentList array
 	commentList.push(newComment);
 
-	//sort the commentList array in descending order of date
+	// sort the commentList array in descending order of date
 	commentList.sort(sortCommentList);
 
 	// display the updated commentList array on the page
@@ -58,7 +58,7 @@ function addComment(newComment) {
 function displayComments() {
 	const cContainer = document.querySelector(".comments__display-wrapper");
 
-	//empty the comment container to avoid displaying duplicates
+	// empty the comment container to avoid displaying duplicates
 	cContainer.innerHTML = "";
 
 	// create new elements, add html classes for styling, and display comments on page

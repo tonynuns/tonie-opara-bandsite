@@ -129,9 +129,8 @@
 	}
 	&__image {
 		width: 100%;
-		filter: grayscale(100%); //Diving deeper code
+		filter: grayscale(100%);
 
-		//Diving deeper code
 		&:hover {
 			filter: none;
 		}
@@ -215,7 +214,7 @@
 			gap: 0.5rem;
 		}
 		&-field-label {
-			@include typography($text-size: 1.1rem, $text-weight: 700);
+			@include typography($text-size: 1.1rem, $text-weight: 600);
 			color: $silver;
 
 			@include desktop {
@@ -229,6 +228,7 @@
 			border-radius: 0.4rem;
 			font-family: "avenir-next";
 			font-size: 1.2rem;
+			background-color: $alabaster;
 
 			@include tablet {
 				font-size: 1.4rem;
