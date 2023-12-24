@@ -1,40 +1,9 @@
-const showList = [
-	{
-		date: "Mon Sept 06 2021",
-		venue: "Ronald Lane",
-		location: "San Francisco, CA",
-	},
-	{
-		date: "Tue Sept 21 2021",
-		venue: "Pier 3 East",
-		location: "San Francisco, CA",
-	},
-	{
-		date: "Fri Oct 15 2021",
-		venue: "View Lounge",
-		location: "San Francisco, CA",
-	},
-	{
-		date: "Sat Nov 06 2021",
-		venue: "Hyatt Agency",
-		location: "San Francisco, CA",
-	},
-	{
-		date: "Fri Nov 26 2021",
-		venue: "Moscow Center",
-		location: "San Francisco, CA",
-	},
-	{
-		date: "Wed Dec 15 2021",
-		venue: "Press Club",
-		location: "San Francisco, CA",
-	},
-];
+showsPageApi = new BandSiteApi(apiKey);
 
 // loads and displays shows section on page
-displayShows();
+showsPageApi.getShows().then((result) => {
+	const showList = result;
 
-function displayShows() {
 	const showSection = document.querySelector(".shows");
 
 	// creates new elements for shows section and adds classes for styling
@@ -64,7 +33,7 @@ function displayShows() {
 
 		const dateDetail = document.createElement("p");
 		dateDetail.classList.add("shows__info-detail", "shows__info-detail--date");
-		dateDetail.innerText = show.date;
+		dateDetail.innerText = new Date(show.date).toDateString();
 		dateDiv.appendChild(dateDetail);
 
 		// show venue detail
@@ -81,7 +50,7 @@ function displayShows() {
 
 		const venueDetail = document.createElement("p");
 		venueDetail.classList.add("shows__info-detail");
-		venueDetail.innerText = show.venue;
+		venueDetail.innerText = show.place;
 		venueDiv.appendChild(venueDetail);
 
 		// show location detail
@@ -115,25 +84,26 @@ function displayShows() {
 
 	showSection.appendChild(showHeader);
 	showSection.appendChild(divContainer);
-}
 
-// change 'show' background colour when clicked
-const showsGroup = document.querySelector(".shows__container");
-const listOfShows = document.querySelectorAll(".shows__info-wrapper");
+	// change 'show' background colour when clicked
+	const showsGroup = document.querySelector(".shows__container");
+	const listOfShows = document.querySelectorAll(".shows__info-wrapper");
 
-showsGroup.addEventListener("click", (e) => {
-	listOfShows.forEach((show) => {
-		if (show === e.target || show.contains(e.target)) {
-			show.classList.add("shows__info-wrapper--clicked");
-		} else {
-			show.classList.remove("shows__info-wrapper--clicked");
-		}
+	showsGroup.addEventListener("click", (e) => {
+		listOfShows.forEach((show) => {
+			if (show === e.target || show.contains(e.target)) {
+				show.classList.add("shows__info-wrapper--clicked");
+			} else {
+				show.classList.remove("shows__info-wrapper--clicked");
+			}
+		});
+		e.stopPropagation();
 	});
-	e.stopPropagation();
-});
 
-document.addEventListener("click", (e) => {
-	listOfShows.forEach((show) => {
-		show.classList.remove("shows__info-wrapper--clicked");
+	// remove 'show' background colour when anywhere else on page is clicked
+	document.addEventListener("click", (e) => {
+		listOfShows.forEach((show) => {
+			show.classList.remove("shows__info-wrapper--clicked");
+		});
 	});
 });
