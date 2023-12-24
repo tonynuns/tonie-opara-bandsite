@@ -8,31 +8,37 @@ class BandSiteApi {
 
 	async postComment(newComment) {
 		const apiUrl = this.baseUrl + "comments" + "?api_key=" + this.apiKey;
-		const response = await axios.post(apiUrl, newComment);
-		return response.data;
+		try {
+			const response = await axios.post(apiUrl, newComment);
+			return response.data;
+		} catch (error) {
+			console.error(error);
+		}
 	}
 
 	async getComments() {
 		const apiUrl = this.baseUrl + "comments" + "?api_key=" + this.apiKey;
-		const response = await axios.get(apiUrl);
-		response.data.sort((a, b) => {
-			return b.timestamp - a.timestamp;
-		});
-		return response.data;
+		try {
+			const response = await axios.get(apiUrl);
+			response.data.sort((a, b) => {
+				return b.timestamp - a.timestamp;
+			});
+			return response.data;
+		} catch (error) {
+			console.error(error);
+		}
 	}
 
 	async getShows() {
 		const apiUrl = this.baseUrl + "showdates" + "?api_key=" + this.apiKey;
-		const response = await axios.get(apiUrl);
-		return response.data;
+		try {
+			const response = await axios.get(apiUrl);
+			return response.data;
+		} catch (error) {
+			console.error(error);
+		}
 	}
 }
-
-// bioPageApi = new BandSiteApi(apiKey);
-// bioPageApi.getComments().then((result) => {
-// 	const commentList = result;
-// 	console.log(commentList);
-// });
 
 // showsPageApi = new BandSiteApi(apiKey);
 // showsPageApi.getShows().then((result) => {
