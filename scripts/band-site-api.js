@@ -21,7 +21,7 @@ class BandSiteApi {
 		try {
 			const response = await axios.get(apiUrl);
 			response.data.sort((a, b) => {
-				return b.timestamp - a.timestamp;
+				return a.timestamp - b.timestamp;
 			});
 			return response.data;
 		} catch (error) {
@@ -38,10 +38,32 @@ class BandSiteApi {
 			console.error(error);
 		}
 	}
-}
 
-// showsPageApi = new BandSiteApi(apiKey);
-// showsPageApi.getShows().then((result) => {
-// 	const showList = result;
-// 	console.log(showList);
-// });
+	//Diving Deeper Codes
+	async likeComment(commentId) {
+		const apiUrl =
+			this.baseUrl +
+			"comments/" +
+			commentId +
+			"/like" +
+			"?api_key=" +
+			this.apiKey;
+		try {
+			const response = await axios.put(apiUrl);
+			return response.data;
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
+	async deleteComment(commentId) {
+		const apiUrl =
+			this.baseUrl + "comments/" + commentId + "?api_key=" + this.apiKey;
+		try {
+			const response = await axios.delete(apiUrl);
+			return response.data;
+		} catch (error) {
+			console.error(error);
+		}
+	}
+}

@@ -1,12 +1,36 @@
-showsPageApi = new BandSiteApi(apiKey);
+const showsPageApi = new BandSiteApi(apiKey);
 
-// loads and displays shows section on page
-showsPageApi.getShows().then((result) => {
-	const showList = result;
+// load and display shows section on page
+displayShows().then(() => {
+	// change 'show' background colour when clicked
+	const showsGroup = document.querySelector(".shows__container");
+	const listOfShows = document.querySelectorAll(".shows__info-wrapper");
+
+	showsGroup.addEventListener("click", (e) => {
+		listOfShows.forEach((show) => {
+			if (show === e.target || show.contains(e.target)) {
+				show.classList.add("shows__info-wrapper--clicked");
+			} else {
+				show.classList.remove("shows__info-wrapper--clicked");
+			}
+		});
+		e.stopPropagation();
+	});
+
+	// remove 'show' background colour when anywhere else on page is clicked
+	document.addEventListener("click", (e) => {
+		listOfShows.forEach((show) => {
+			show.classList.remove("shows__info-wrapper--clicked");
+		});
+	});
+});
+
+async function displayShows() {
+	showList = await showsPageApi.getShows();
 
 	const showSection = document.querySelector(".shows");
 
-	// creates new elements for shows section and adds classes for styling
+	// create new elements for shows section and add classes for styling
 	const showHeader = document.createElement("h1");
 	showHeader.classList.add("shows__heading");
 	showHeader.innerText = "Shows";
@@ -84,26 +108,4 @@ showsPageApi.getShows().then((result) => {
 
 	showSection.appendChild(showHeader);
 	showSection.appendChild(divContainer);
-
-	// change 'show' background colour when clicked
-	const showsGroup = document.querySelector(".shows__container");
-	const listOfShows = document.querySelectorAll(".shows__info-wrapper");
-
-	showsGroup.addEventListener("click", (e) => {
-		listOfShows.forEach((show) => {
-			if (show === e.target || show.contains(e.target)) {
-				show.classList.add("shows__info-wrapper--clicked");
-			} else {
-				show.classList.remove("shows__info-wrapper--clicked");
-			}
-		});
-		e.stopPropagation();
-	});
-
-	// remove 'show' background colour when anywhere else on page is clicked
-	document.addEventListener("click", (e) => {
-		listOfShows.forEach((show) => {
-			show.classList.remove("shows__info-wrapper--clicked");
-		});
-	});
-});
+}

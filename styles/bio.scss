@@ -259,6 +259,9 @@
 			}
 		}
 		&-btn {
+			display: block;
+			width: 100%;
+
 			@include tablet {
 				align-self: flex-end;
 				width: 30%;
@@ -330,6 +333,18 @@
 					$line-height: 2.4rem
 				);
 			}
+		}
+		&-btn-wrapper {
+			@include flex-property;
+			gap: 2rem;
+			padding-top: 0.5rem;
+
+			@include tablet {
+				gap: 4rem;
+			}
+		}
+		&-btn {
+			@extend .comments__form-btn;
 		}
 	}
 }

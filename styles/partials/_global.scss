@@ -132,10 +132,6 @@ body {
 	&:hover {
 		background-color: $bandsite-darkblack;
 	}
-
-	@include tablet {
-		min-width: 15rem;
-	}
 }
 .footer {
 	background-color: $bandsite-black;
