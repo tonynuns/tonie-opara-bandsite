@@ -21,7 +21,7 @@ class BandSiteApi {
 		try {
 			const response = await axios.get(apiUrl);
 			response.data.sort((a, b) => {
-				return a.timestamp - b.timestamp;
+				return b.timestamp - a.timestamp;
 			});
 			return response.data;
 		} catch (error) {

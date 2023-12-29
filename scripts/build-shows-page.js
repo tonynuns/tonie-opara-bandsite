@@ -1,29 +1,7 @@
 const showsPageApi = new BandSiteApi(apiKey);
 
 // load and display shows section on page
-displayShows().then(() => {
-	// change 'show' background colour when clicked
-	const showsGroup = document.querySelector(".shows__container");
-	const listOfShows = document.querySelectorAll(".shows__info-wrapper");
-
-	showsGroup.addEventListener("click", (e) => {
-		listOfShows.forEach((show) => {
-			if (show === e.target || show.contains(e.target)) {
-				show.classList.add("shows__info-wrapper--clicked");
-			} else {
-				show.classList.remove("shows__info-wrapper--clicked");
-			}
-		});
-		e.stopPropagation();
-	});
-
-	// remove 'show' background colour when anywhere else on page is clicked
-	document.addEventListener("click", (e) => {
-		listOfShows.forEach((show) => {
-			show.classList.remove("shows__info-wrapper--clicked");
-		});
-	});
-});
+displayShows();
 
 async function displayShows() {
 	showList = await showsPageApi.getShows();
@@ -108,4 +86,26 @@ async function displayShows() {
 
 	showSection.appendChild(showHeader);
 	showSection.appendChild(divContainer);
+
+	// change 'show' background colour when clicked
+	const showsGroup = document.querySelector(".shows__container");
+	const listOfShows = document.querySelectorAll(".shows__info-wrapper");
+
+	showsGroup.addEventListener("click", (e) => {
+		listOfShows.forEach((show) => {
+			if (show === e.target || show.contains(e.target)) {
+				show.classList.add("shows__info-wrapper--clicked");
+			} else {
+				show.classList.remove("shows__info-wrapper--clicked");
+			}
+		});
+		e.stopPropagation();
+	});
+
+	// remove 'show' background colour when anywhere else on page is clicked
+	document.addEventListener("click", (e) => {
+		listOfShows.forEach((show) => {
+			show.classList.remove("shows__info-wrapper--clicked");
+		});
+	});
 }
