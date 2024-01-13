@@ -15,69 +15,72 @@ function formBtnListener() {
 			comment: cFormComment,
 		};
 		// post the new comment object to the server
-		await bioPageApi.postComment(newCommentObj);
-
-		// display new comment on page
-		displayComments();
+		const commentObj = await bioPageApi.postComment(newCommentObj);
+		const isNewComment = true;
+		addComment(commentObj, isNewComment);
 	});
 }
 
 // DIVING DEEPER CODE - function to add event listener for 'Like' button
 function likeBtnListener(btn) {
 	btn.addEventListener("click", async (e) => {
-		await bioPageApi.likeComment(e.target.name);
-		displayComments();
+		const likedCommentObj = await bioPageApi.likeComment(e.target.name);
+		e.target.innerText = "Like: " + likedCommentObj.likes;
 	});
 }
 
 // DIVING DEEPER CODE - function to add event listener for 'Delete' button
 function deleteBtnListener(btn) {
 	btn.addEventListener("click", async (e) => {
-		await bioPageApi.deleteComment(e.target.name);
-		displayComments();
+		const deletedCommentObj = await bioPageApi.deleteComment(e.target.name);
+		document.getElementById(deletedCommentObj.id).remove();
 	});
 }
 
 // function to convert date format to dynamic timestamp for comments
 function timeDiff(date) {
-	const yrInSec = 365 * 24 * 60 * 60;
-	const mthInSec = 30 * 24 * 60 * 60;
-	const wkInSec = 7 * 24 * 60 * 60;
-	const dayInSec = 24 * 60 * 60;
-	const hrInSec = 60 * 60;
+	const yrInSec = 365 * 24 * 60 * 60; // 31,536,000
+	const mthInSec = 30 * 24 * 60 * 60; // 2,592,000
+	const wkInSec = 7 * 24 * 60 * 60; // 604,800
+	const dayInSec = 24 * 60 * 60; // 86,400
+	const hrInSec = 60 * 60; // 3,600
 	const minInSec = 60;
-	const diff = new Date() - new Date(date);
+	const diff = Math.max(0, new Date() - new Date(date));
+
 	let diffDays = Math.floor(diff / 1000);
-	let tformat = "seconds";
+	let timeFormat = "seconds";
 
 	if (diffDays > yrInSec) {
 		diffDays = Math.floor(diffDays / yrInSec);
-		tformat = "years";
+		timeFormat = "years";
 	} else if (diffDays > mthInSec) {
 		diffDays = Math.floor(diffDays / mthInSec);
-		tformat = "months";
+		timeFormat = "months";
 	} else if (diffDays > wkInSec) {
 		diffDays = Math.floor(diffDays / wkInSec);
-		tformat = "weeks";
+		timeFormat = "weeks";
 	} else if (diffDays > dayInSec) {
 		diffDays = Math.floor(diffDays / dayInSec);
-		tformat = "days";
+		timeFormat = "days";
 	} else if (diffDays > hrInSec) {
 		diffDays = Math.floor(diffDays / hrInSec);
-		tformat = "hours";
+		timeFormat = "hours";
 	} else if (diffDays > minInSec) {
 		diffDays = Math.floor(diffDays / minInSec);
-		tformat = "minutes";
+		timeFormat = "minutes";
 	}
-	const dateF = new Intl.RelativeTimeFormat("en-us", { numeric: "always" });
-	const tAgo = dateF.format(-diffDays, tformat);
-	return tAgo;
+	const dateFormat = new Intl.RelativeTimeFormat("en-us", {
+		numeric: "always",
+	});
+	const timeAgo = dateFormat.format(-diffDays, timeFormat);
+	return timeAgo;
 }
 
 // function to add comment elements to the DOM
-function addComment(commentsContainer, comment) {
+function addComment(comment, isNewComment) {
 	const newDivOne = document.createElement("div");
 	newDivOne.classList.add("comments__display");
+	newDivOne.setAttribute("id", comment.id); // DIVING DEEPER CODE
 
 	const newDivTwo = document.createElement("div");
 	newDivTwo.classList.add("comments__display-avatar", "avatar");
@@ -135,7 +138,12 @@ function addComment(commentsContainer, comment) {
 	newDivThree.appendChild(newDivFour);
 	newDivOne.appendChild(newDivTwo);
 	newDivOne.appendChild(newDivThree);
-	commentsContainer.appendChild(newDivOne);
+
+	if (isNewComment) {
+		commentsContainer.prepend(newDivOne);
+	} else {
+		commentsContainer.appendChild(newDivOne);
+	}
 }
 
 // function to display retrieve comments from API and display on page
@@ -144,17 +152,14 @@ async function displayComments() {
 	const commentList = await bioPageApi.getComments();
 
 	// empty the DOM comment container to avoid displaying duplicates
-	const cContainer = document.querySelector(".comments__display-wrapper");
-	cContainer.innerHTML = "";
+	commentsContainer.innerHTML = "";
 
 	// create new elements and add to the DOM
 	commentList.forEach((comment) => {
-		addComment(cContainer, comment);
+		addComment(comment);
 	});
 }
 
-// add click event listener to form
+const commentsContainer = document.querySelector(".comments__display-wrapper");
 formBtnListener();
-
-// display comments on page
 displayComments();
